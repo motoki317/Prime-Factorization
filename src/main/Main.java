@@ -8,20 +8,13 @@ public class Main {
 
         InputUtils input = new InputUtils();
 
-        int beginning = input.askIntInput("Input the beginning number");
-        int limit = beginning + input.askIntInput("Input how many numbers to continue factorizing.");
+        long n;
+        do {
+            n = input.askLongInput("Input the number, type -1 to end.");
 
-        long start = System.nanoTime();
-
-        for (long i = beginning; i < limit; i++) {
-            PrimeFact f = new PrimeFact(i);
-
+            PrimeFact f = new PrimeFact(n);
             f.println();
-        }
-
-        long end = System.nanoTime();
-
-        System.out.println("Took " + (end - start)/1000000D + " ms to compute.");
+        } while (n != -1);
 
     }
 

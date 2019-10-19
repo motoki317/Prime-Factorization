@@ -42,6 +42,37 @@ public class InputUtils {
         return ret;
     }
 
+    /**
+     * Ask for long input in format<br/>
+     * (message)<br/>
+     * > (input)<br/>
+     * Blocking method and repeats if the input is not in the desired format.
+     * @param message Message to ask.
+     * @return Input long.
+     */
+
+    public long askLongInput(String message) {
+        ask(message);
+
+        Long ret = null;
+        boolean c = true;
+
+        while (c) {
+            try {
+                ret = sc.nextLong();
+            } catch (InputMismatchException e) {
+                System.out.println();
+                System.out.println("Invalid input! Please try again.");
+                ask(message);
+                sc.nextLine();
+                continue;
+            }
+            c = false;
+        }
+
+        return ret;
+    }
+
     private static void ask(String message) {
         System.out.println(message);
         System.out.print("> ");
